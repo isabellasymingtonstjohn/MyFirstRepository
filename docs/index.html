@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bella Flora">
+<meta name="dcterms.date" content="2026-10-22">
 
-<title>NewQuarto</title>
+<title>My Personal Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,7 +57,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -70,20 +91,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-b0a21ad2a3fc2b49725b3a456cb8bec0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">1</span> Quarto</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">2</span> Running Code</a></li>
+  <li><a href="#section-header" id="toc-section-header" class="nav-link" data-scroll-target="#section-header"><span class="header-section-number">3</span> Section Header</a>
+  <ul class="collapse">
+  <li><a href="#header" id="toc-header" class="nav-link" data-scroll-target="#header"><span class="header-section-number">3.1</span> Header</a>
+  <ul class="collapse">
+  <li><a href="#level-3-header" id="toc-level-3-header" class="nav-link" data-scroll-target="#level-3-header"><span class="header-section-number">3.1.1</span> Level 3 Header</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#text-format" id="toc-text-format" class="nav-link" data-scroll-target="#text-format"><span class="header-section-number">4</span> Text Format</a></li>
+  <li><a href="#ordered-list" id="toc-ordered-list" class="nav-link" data-scroll-target="#ordered-list"><span class="header-section-number">5</span> Ordered List</a></li>
+  <li><a href="#create-a-hyperlink" id="toc-create-a-hyperlink" class="nav-link" data-scroll-target="#create-a-hyperlink"><span class="header-section-number">6</span> Create a HyperLink</a></li>
+  <li><a href="#tabsets" id="toc-tabsets" class="nav-link" data-scroll-target="#tabsets"><span class="header-section-number">7</span> Tabsets</a></li>
+  <li><a href="#add-in-data" id="toc-add-in-data" class="nav-link" data-scroll-target="#add-in-data"><span class="header-section-number">8</span> Add in Data</a></li>
+  <li><a href="#inserting-figures-and-captions" id="toc-inserting-figures-and-captions" class="nav-link" data-scroll-target="#inserting-figures-and-captions"><span class="header-section-number">9</span> Inserting figures and captions</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NewQuarto</h1>
+<h1 class="title">My Personal Quarto</h1>
 </div>
 
 
@@ -97,6 +169,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 22, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -106,12 +184,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<section id="quarto" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Quarto</h1>
 <p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<section id="running-code" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Running Code</h1>
 <p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -126,22 +204,288 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
-<p><strong>Bolded Text</strong></p>
 </section>
-<section id="fav-colors-.tabset" class="level1">
-<h1><strong>Fav Colors</strong> (.tabset)</h1>
-<section id="green" class="level2">
-<h2 class="anchored" data-anchor-id="green">Green</h2>
+<section id="section-header" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Section Header</h1>
+<section id="header" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="header"><span class="header-section-number">3.1</span> Header</h2>
+<section id="level-3-header" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="level-3-header"><span class="header-section-number">3.1.1</span> Level 3 Header</h3>
+<section id="level-4-header" class="level4" data-number="3.1.1.1">
+<h4 data-number="3.1.1.1" class="anchored" data-anchor-id="level-4-header"><span class="header-section-number">3.1.1.1</span> Level 4 Header</h4>
 </section>
-<section id="purple" class="level2">
-<h2 class="anchored" data-anchor-id="purple">Purple</h2>
 </section>
-<section id="pink" class="level2">
-<h2 class="anchored" data-anchor-id="pink">Pink</h2>
 </section>
+</section>
+<section id="text-format" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Text Format</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>**Wrap text in double astrisks to bold**</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Wrap text in double astrisks to bold</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>*Wrap text in single astrisks to italicize*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Wrap text in single astrisks to italicize</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>**Wrap text in triple astrisks to bold AND italicize**</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong><em>Wrap text in triple astrisks to bold AND italicize</em></strong></p>
+<p><code>wrap inline 2 + 2 + 2 = `\{r} 2 + 2 + 2`</code> 2 + 2 + 2 = <code>\{r} 2 + 2 + 2</code></p>
+</section>
+<section id="ordered-list" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Ordered List</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>First Step</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Second Step</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  i) Sub-step</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Third Step</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ii) Sub-step</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>First Step</li>
+</ol>
+<!-- -->
+<ol type="i">
+<li>Sub-step</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>Second Step</li>
+</ol>
+<!-- -->
+<ol start="2" type="i">
+<li>Sub-step</li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li>Third Step</li>
+</ol>
+<!-- -->
+<ol start="3" type="i">
+<li>Sub-step</li>
+</ol>
+</section>
+<section id="create-a-hyperlink" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Create a HyperLink</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Create a hyperlink using brackets for text and parentheses for the URL adrress</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="https://docs.google.com/document/d/1Zdrt999fLqcYmVgDyOgcycTs65hQQtfstkHG-UpgPHE/edit?tab=t.oysflalk4kys">GIS Class Notes</a></p>
+</section>
+<section id="tabsets" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Tabsets</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Tab 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Tab 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">first child</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">second child</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>View Code Below</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>View Code Below</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">first child</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">second child</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-in-data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Add in Data</h1>
+<p>Load libraries and data at the top of your document</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># loading all libraries</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2+2+2</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading in Data </span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>my_real_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/900117198/Desktop/ArcGIS/R/projects/scripts/Week7_DataViswggplot/data-visualizations-with-ggplot/data/sttstj_fish_biomass.csv"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#ORRR</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>my_real_data2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/sttstj_fish_biomass.csv"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_real_data2)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+   YEAR REGION protected_status SPECIES_CD biomass       var COMNAME     trophic
+  &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;  
+1  2017 STTSTJ                0 CEP CRUE    0.0292 0.0000186 graysby     grouper
+2  2017 STTSTJ                0 CEP FULV    0.126  0.000359  coney       grouper
+3  2017 STTSTJ                0 EPI GUTT    0.149  0.00113   red hind    grouper
+4  2017 STTSTJ                0 LUT ANAL    0.430  0.0109    mutton sna… snapper
+5  2017 STTSTJ                0 LUT GRIS    0.0523 0.00122   gray snapp… snapper
+6  2017 STTSTJ                0 OCY CHRY    0.174  0.00277   yellowtail… snapper</code></pre>
+</div>
+</div>
+</section>
+<section id="inserting-figures-and-captions" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Inserting figures and captions</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">"Weight"</span>, <span class="at">y =</span> <span class="st">"Miles Per Gallon"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-mpg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-mpg-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figure 1. Scatterplot of Car Weight vs.&nbsp;MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As shown in <a href="#fig-mpg" class="quarto-xref">Figure&nbsp;1</a>, heavier cars typically have lower MPG</p>
+<section id="table-outputs" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Table Outputs</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg)) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1
+</figcaption>
+<div aria-describedby="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">avg_mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">26.66364</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">19.74286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">15.10000</td>
+</tr>
+</tbody>
+</table>
+<p>Average MPG by Cylinder Count</p>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="inserting-images" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Inserting Images</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/add.jpeg here)</span>{fig-algn="center" width=50% .lightbox}</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>fig-algn="center" - centers the image</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>width=50% - scaled the photo</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>.lightbox - when user clicks on the image full resolution pops up</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/add.jpeg here)</span>{fig-algn="center" width=50% .lightbox}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="latex" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> LaTex</h1>
+<p><code>Insert inline txt by surrounding a formula in singal dollar signs: $y = mx + b$</code></p>
+<p>Insert inline txt by surrounding a formula in singal dollar signs: <span class="math inline">\(y = mx + b\)</span></p>
+<p><code>Insert inline txt by surrounding a formula in double dollar signs: $$y = mx + b$$</code></p>
+<p>Insert inline txt by surrounding a formula in double dollar signs: <span class="math display">\[y = mx + b\]</span></p>
+<section id="fractions" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="fractions"><span class="header-section-number">12.1</span> Fractions</h2>
+<p><span class="math display">\[
+\frac{1.5}{2.3}
+\]</span></p>
+</section>
+<section id="super-and-sub-script" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="super-and-sub-script"><span class="header-section-number">12.2</span> Super and Sub Script</h2>
+<p><span class="math display">\[
+Y = X_1 + X_2
+\]</span></p>
+<p><span class="math display">\[
+Y = X^ + X^2
+\]</span></p>
+</section>
+<section id="square-root" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="square-root"><span class="header-section-number">12.3</span> Square Root</h2>
+<p><span class="math display">\[
+\sqrt{p^2}
+\]</span></p>
+</section>
+<section id="linear-models" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="linear-models"><span class="header-section-number">12.4</span> Linear Models</h2>
+<p><span class="math display">\[
+x_1= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</span></p>
+<p><span class="math display">\[
+Y \sim X\beta_0 + X\beta_1 + \epsilon
+\]</span></p>
+</section>
+</section>
+<section id="citations" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Citations</h1>
+<p><span class="citation" data-cites="bigelow2025">(<a href="#ref-bigelow2025" role="doc-biblioref">Bigelow et al. 2025</a>)</span></p>
+</section>
+</div>
+</div>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bigelow2025" class="csl-entry" role="listitem">
+Bigelow, William F., L. Grace Walls, Nicholas D. Higgs, and Iain J. McGaw. 2025. <span>“Impacts of Projected Precipitation Decline on Water Balance in the Black Land Crab, (Gecarcinus Ruricola) in The Bahamas.”</span> <em>Science of The Total Environment</em> 995 (September): 180103. <a href="https://doi.org/10.1016/j.scitotenv.2025.180103">https://doi.org/10.1016/j.scitotenv.2025.180103</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -1,15 +1,22 @@
 ---
-title: "NewQuarto" 
+title: "My Personal Quarto" 
 author: "Bella Flora"
-format: html
-editor: visual
+date: today
+format: 
+  html:
+    theme: sketchy
+    toc: true
+    number-sections: true
+    case-fold: show
+editor: visual  
+bibliography: references.bib
 ---
 
-## Quarto
+# Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+# Running Code
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
@@ -27,12 +34,231 @@ You can add options to executable code like this
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
-**Bolded Text**
+# Section Header
 
-# **Fav Colors** (.tabset)
+## Header
 
-## Green
+### Level 3 Header
 
-## Purple
+#### Level 4 Header
 
-## Pink
+# Text Format
+
+``` markdown
+**Wrap text in double astrisks to bold**
+```
+
+**Wrap text in double astrisks to bold**
+
+``` markdown
+*Wrap text in single astrisks to italicize*
+```
+
+*Wrap text in single astrisks to italicize*
+
+``` markdown
+**Wrap text in triple astrisks to bold AND italicize**
+```
+
+***Wrap text in triple astrisks to bold AND italicize***
+
+`` wrap inline 2 + 2 + 2 = `\{r} 2 + 2 + 2` `` 2 + 2 + 2 = `\{r} 2 + 2 + 2`
+
+# Ordered List
+
+``` markdown
+
+1. First Step
+2. Second Step
+  i) Sub-step
+3. Third Step
+  ii) Sub-step
+```
+
+1.  First Step
+
+<!-- -->
+
+i)  Sub-step
+
+<!-- -->
+
+2.  Second Step
+
+<!-- -->
+
+ii) Sub-step
+
+<!-- -->
+
+3.  Third Step
+
+<!-- -->
+
+iii) Sub-step
+
+# Create a HyperLink
+
+``` markdown
+Create a hyperlink using brackets for text and parentheses for the URL adrress
+```
+
+[GIS Class Notes](https://docs.google.com/document/d/1Zdrt999fLqcYmVgDyOgcycTs65hQQtfstkHG-UpgPHE/edit?tab=t.oysflalk4kys)
+
+# Tabsets
+
+::::: panel-tabset
+## Tab 1
+
+::: panel-tabset
+### first child
+
+View Code Below
+
+```{r}
+library(dplyr)
+```
+
+### second child
+
+View Code Below
+
+```{r}
+
+```
+:::
+
+## Tab 2
+
+::: panel-tabset
+### first child
+
+```{r}
+
+```
+
+### second child
+
+```{r}
+
+```
+:::
+:::::
+
+# Add in Data
+
+Load libraries and data at the top of your document
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| echo: fenced
+
+# loading all libraries
+library(tidyverse)
+library(knitr)
+
+# 2+2+2
+# Reading in Data 
+mydata <- mtcars
+my_real_data <- read_csv("C:/Users/900117198/Desktop/ArcGIS/R/projects/scripts/Week7_DataViswggplot/data-visualizations-with-ggplot/data/sttstj_fish_biomass.csv")
+
+#ORRR
+my_real_data2 <- read_csv("../data/sttstj_fish_biomass.csv")
+
+head(my_real_data2)
+
+
+```
+
+# Inserting figures and captions
+
+```{r}
+#| label: fig-mpg
+#| fig-cap: "Figure 1. Scatterplot of Car Weight vs. MPG"
+
+
+ggplot(mydata, aes(x = wt, y = mpg)) +
+  geom_point() +
+  theme_minimal() + 
+  labs( x = "Weight", y = "Miles Per Gallon")
+
+```
+
+::: callout-tip
+## Tip
+
+As shown in @fig-mpg, heavier cars typically have lower MPG
+
+# Table Outputs
+
+```{r}
+#| label: tbl-summary
+#| fig-cap: "Average MPG by Cylinder Count"
+
+mydata |>
+  group_by(cyl) |>
+  summarise(avg_mpg = mean(mpg)) |>
+  kable()
+```
+
+# Inserting Images
+
+``` markdown
+![](images/add.jpeg here){fig-algn="center" width=50% .lightbox}
+
+fig-algn="center" - centers the image
+width=50% - scaled the photo
+.lightbox - when user clicks on the image full resolution pops up
+
+![](images/add.jpeg here){fig-algn="center" width=50% .lightbox}
+```
+
+# LaTex
+
+`Insert inline txt by surrounding a formula in singal dollar signs: $y = mx + b$`
+
+Insert inline txt by surrounding a formula in singal dollar signs: $y = mx + b$
+
+`Insert inline txt by surrounding a formula in double dollar signs: $$y = mx + b$$`
+
+Insert inline txt by surrounding a formula in double dollar signs: $$y = mx + b$$
+
+## Fractions
+
+$$
+\frac{1.5}{2.3}
+$$
+
+## Super and Sub Script
+
+$$
+Y = X_1 + X_2
+$$ 
+
+$$
+Y = X^ + X^2
+$$ 
+
+## Square Root
+
+
+$$
+\sqrt{p^2}
+$$ 
+
+## Linear Models 
+
+$$
+x_1= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$ 
+
+$$
+Y \sim X\beta_0 + X\beta_1 + \epsilon
+$$
+
+# Citations
+
+[@bigelow2025]
+:::
